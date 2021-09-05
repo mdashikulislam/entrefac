@@ -26,65 +26,120 @@
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Register a new membership</p>
-                    <form action="index.html" method="post">
+                    <form action="{{route('register')}}" method="post">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="form-group">
-                                    <label>Select Country</label>
-                                    <select name="country" class="form-control select2bs4" style="width: 100%;">
-                                        <option selected="selected">Alabama</option>
+                                    <label for="country">Select Country</label>
+                                    <select id="country" name="country" class="form-control select2bs4" style="width: 100%;">
+                                        {!! getCountryDropdown('GH') !!}
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Full name">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fas fa-user"></span>
+                                <div class="form-group">
+                                    <label for="business_name">Business Name</label>
+                                    <div class="input-group mb-3">
+                                        <input id="business_name" name="business_name" type="text" class="form-control" placeholder="Enter Business Name">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-briefcase"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="input-group mb-3">
-                                    <input type="email" class="form-control" placeholder="Email">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fas fa-envelope"></span>
+                                <div class="form-group">
+                                    <label for="first_name">First Name</label>
+                                    <div class="input-group mb-3">
+                                        <input id="first_name" name="first_name" type="text" class="form-control" placeholder="Enter First Name">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-user"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="input-group mb-3">
-                                    <input type="password" class="form-control" placeholder="Password">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fas fa-lock"></span>
+                                <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <div class="input-group mb-3">
+                                        <input id="last_name" name="last_name" type="text" class="form-control" placeholder="Enter Last Name">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-user"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="input-group mb-3">
-                                    <input type="password" class="form-control" placeholder="Retype password">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text">
-                                            <span class="fas fa-lock"></span>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <div class="input-group mb-3">
+                                        <input id="email" name="email" type="text" class="form-control" placeholder="Enter Email Address">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-envelope"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="input-group mb-3">
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-block btn-danger">
-                                            <i class="fab fa-google-plus mr-2"></i>
-                                            Sign up using Google+
-                                        </a>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <div class="input-group mb-3">
+                                        <input id="phone" name="phone" type="text" class="form-control" placeholder="Enter Phone Number">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-mobile"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="form-group">
+                                    <label for="password">{{ __('Password') }}</label>
+                                    <div class="input-group mb-3">
+                                        <input id="password" name="password" type="password" class="form-control" >
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-lock"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="form-group">
+                                    <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                                    <div class="input-group mb-3">
+                                        <input id="password-confirm" name="password_confirmation" type="password" class="form-control" >
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-lock"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="form-group" style="margin-top: 32px;">
+                                    <div class="input-group d-block">
+                                        <div class="text-center">
+                                            <button class="btn btn-block btn-success">
+                                                <i class="fab fa-google-plus mr-2"></i>
+                                                Sign up using Google+
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </form>
