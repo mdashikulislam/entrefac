@@ -146,11 +146,11 @@
                                     <label for="">{{ __(' Have you registered your business? ') }}</label>
                                     <div>
                                         <div class="custom-control custom-radio d-inline mr-2">
-                                            <input checked class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
+                                            <input checked class="custom-control-input" type="radio" id="customRadio1" value="Yes" name="registered_business">
                                             <label for="customRadio1" class="custom-control-label">Yes, I am</label>
                                         </div>
                                         <div class="custom-control custom-radio d-inline">
-                                            <input class="custom-control-input" type="radio" id="customRadio1" name="customRadio">
+                                            <input class="custom-control-input" type="radio" id="customRadio1" value="No" name="registered_business">
                                             <label for="customRadio1" class="custom-control-label">No, I am Not</label>
                                         </div>
                                     </div>
