@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('landing')->middleware('auth');
+Route::get('/',[\App\Http\Controllers\HomeController::class,'landing'])->name('landing')->middleware('auth');
 
 Auth::routes();
 
