@@ -22,7 +22,7 @@
         <div class="col-md-12   col-lg-12 col-12">
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
-                    <a href="index2.html" class="h1"><b>Admin</b>LTE</a>
+                    <a href="index2.html" class="h1"><img src="{{asset('assets/dist/img/AdminLTELogo.png')}}" alt=""></a>
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Register a new membership</p>
@@ -133,8 +133,8 @@
                                     <div class="input-group d-block">
                                         <div class="text-center">
                                             <button class="btn btn-block btn-success">
-                                                <i class="fab fa-google-plus mr-2"></i>
-                                                Sign up using Google+
+                                                <i class="fas fa-user-plus mr-2"></i>
+                                                Sign Up
                                             </button>
                                         </div>
                                     </div>
