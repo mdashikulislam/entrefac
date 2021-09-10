@@ -18,3 +18,39 @@
 <link rel="stylesheet" href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-bs4.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<style>
+    .custom-btn{
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 5px 20px;
+        background: transparent;
+        color: #4B49AC;
+        border-color: #4B49AC;
+    }
+    .custom-btn.active{
+        color: #fff;
+        background: #4B49AC!important;
+        border-color: #4B49AC!important;
+    }
+    .custom-btn:hover{
+        background: #4B49AC!important;
+        border-color: #4B49AC!important;
+    }
+    .btn-color{
+        background:#4B49AC!important;
+        border-color: #4B49AC!important;
+        border-radius: 50px;
+        font-weight:bold;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 20px;
+    }
+    .btn-color:hover{
+        background:transparent!important;
+        border-color: #4B49AC!important;
+        color:#4B49AC!important;
+    }
+</style>

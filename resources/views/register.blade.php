@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ENTREFAC</title>
+    <title>Register | ENTRAFAC  CONSULTLTD</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,7 +27,7 @@
         <div class="col-md-12   col-lg-12 col-12">
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
-                    <a href="index2.html" class="h1">ENTREFAC <span style="font-size: 18px;display: block">C O N S U L T L T D</span></a>
+                    <a href="#" class="h1">ENTRAFAC  <span style="font-size: 18px;display: block">C O N S U L T L T D</span></a>
                 </div>
                 <div class="card-body">
                     <p class="login-box-msg">Register a new membership</p>
@@ -150,8 +150,8 @@
                                             <label for="customRadio1" class="custom-control-label">Yes, I am</label>
                                         </div>
                                         <div class="custom-control custom-radio d-inline">
-                                            <input class="custom-control-input" type="radio" id="customRadio1" value="No" name="registered_business">
-                                            <label for="customRadio1" class="custom-control-label">No, I am Not</label>
+                                            <input class="custom-control-input" type="radio" id="customRadio2" value="No" name="registered_business">
+                                            <label for="customRadio2" class="custom-control-label">No, I am Not</label>
                                         </div>
                                     </div>
                                 </div>
@@ -168,7 +168,11 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            </div>
+                            <div class="col-md-12">
+                                <p class="mb-0 text-center">
+                                    <a href="{{route('login')}}" class="text-center">Already have an account? Click here</a>
+                                </p>
                             </div>
                         </div>
                     </form>
