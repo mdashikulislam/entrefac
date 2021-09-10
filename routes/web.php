@@ -23,4 +23,5 @@ Route::middleware('auth')->middleware('role:'.USER.'|'.ADMIN)->group(function ()
     Route::get('/',[\App\Http\Controllers\HomeController::class,'landing'])->name('landing');
     Route::post('account-update',[\App\Http\Controllers\HomeController::class,'accountUpdate'])->name('account.update');
     Route::get('profile',[\App\Http\Controllers\HomeController::class,'profile'])->name('profile');
+    Route::post('profile',[\App\Http\Controllers\HomeController::class,'updateProfile']);
 });

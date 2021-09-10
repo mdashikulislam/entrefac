@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -67,6 +68,37 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('profile');
+
+        $profile = Profile::where('user_id',\Auth::id())->first();
+        return view('profile')
+            ->with([
+                'profile'=>$profile
+            ]);
+    }
+
+    private function profileExtracted(Profile $profile, Request $request):void
+    {
+        $profile->user_id = \Auth::id();
+        $profile->trading_name = $request->trading_name;
+        $profile->description = $request->description;
+        $profile->stuff_size = $request->stuff_size;
+        $profile->industry = $request->industry;
+        $profile->category = $request->category;
+        $profile->business_type = $request->business_type;
+        $profile->legal_business_name = $request->legal_business_name;
+        $profile->registration_type = $request->registration_type;
+    }
+    public function updateProfile(Request $request)
+    {
+        $profile = Profile::where('user_id',\Auth::id())->first();
+        if ($profile){
+            $this->profileExtracted($profile,$request);
+        }else{
+            $profile = new Profile();
+            $this->profileExtracted($profile,$request);
+        }
+        $profile->save();
+        toast('Profile Update successfully','success');
+        return redirect()->back();
     }
 }

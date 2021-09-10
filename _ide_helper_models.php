@@ -12,6 +12,29 @@
 
 namespace App\Models{
 /**
+ * App\Models\Profile
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string|null $trading_name
+ * @property string|null $description
+ * @property string|null $stuff_size
+ * @property string|null $industry
+ * @property string|null $category
+ * @property string|null $business_type
+ * @property string|null $legal_business_name
+ * @property string|null $registration_type
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Profile query()
+ */
+	class Profile extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
