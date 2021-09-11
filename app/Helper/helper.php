@@ -269,3 +269,13 @@ function getCountryDropdown($selected = ''){
     }
     return $html;
 }
+
+function uploadSingleFile($request = null, $path = '', $prefix = ''): string
+{
+    $file = $request;
+    $fileName = $prefix.'_'.time().rand(0000,9999).'.'.$file->getClientOriginalExtension();
+    $destination = $path;
+    $file->storeAs($destination,$fileName,'public');
+    $fileNameWithDestination = $destination . '/'.$fileName;
+    return $fileNameWithDestination;
+}

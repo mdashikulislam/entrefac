@@ -117,9 +117,35 @@ class HomeController extends Controller
                 'document'=>$document
             ]);
     }
-
+    private function  documentExtracted(Document $document, Request $request){
+        $document->user_id = \Auth::id();
+        if ($request->has('business_plan')){
+            $document->business_plan = uploadSingleFile($request->business_plan,'document','bp');
+        }
+        if ($request->has('certificate_of_in_corporation')){
+            $document->certificate_of_in_corporation = uploadSingleFile($request->certificate_of_in_corporation,'document','cc');
+        }
+        if ($request->has('form_3')){
+            $document->form_3 = uploadSingleFile($request->form_3,'document','fm');
+        }
+        if ($request->has('tin')){
+            $document->tin = uploadSingleFile($request->tin,'document','tin');
+        }
+        if ($request->has('others')){
+            $document->others = uploadSingleFile($request->others,'document','ot');
+        }
+    }
     public function updateDocument(Request $request)
     {
-        return $request->all();
+        $document = Document::where('user_id',\Auth::id())->first();
+        if ($document){
+            $this->documentExtracted($document,$request);
+        }else{
+            $document = new Document();
+            $this->documentExtracted($document,$request);
+        }
+        $document->save();
+        toast('Document upload successfully','success');
+        return redirect()->back();
     }
 }

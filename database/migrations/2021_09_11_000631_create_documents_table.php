@@ -17,10 +17,10 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('business_plan')->nullable();
-            $table->string('c_in_c')->nullable();
+            $table->string('certificate_of_in_corporation')->nullable();
             $table->string('form_3')->nullable();
             $table->string('tin')->nullable();
-            $table->string('other')->nullable();
+            $table->string('others')->nullable();
             $table->timestamps();
         });
     }
