@@ -12,15 +12,44 @@
 
 namespace App\Models{
 /**
+ * App\Models\Contact
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $website
+ * @property string|null $twitter
+ * @property string|null $facebook
+ * @property string|null $instagram
+ * @property string|null $country
+ * @property string|null $description
+ * @property string|null $state
+ * @property string|null $city
+ * @property string|null $street
+ * @property string|null $apartment
+ * @property string|null $support
+ * @property string|null $dispute
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact query()
+ */
+	class Contact extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Document
  *
  * @property int $id
  * @property int $user_id
  * @property string|null $business_plan
- * @property string|null $c_in_c
+ * @property string|null $certificate_of_in_corporation
  * @property string|null $form_3
  * @property string|null $tin
- * @property string|null $other
+ * @property string|null $others
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Document newModelQuery()

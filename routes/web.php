@@ -25,6 +25,7 @@ Route::middleware('auth')->middleware('role:'.USER.'|'.ADMIN)->group(function ()
     Route::get('profile',[\App\Http\Controllers\HomeController::class,'profile'])->name('profile');
     Route::post('profile',[\App\Http\Controllers\HomeController::class,'updateProfile']);
     Route::get('contact',[\App\Http\Controllers\HomeController::class,'contact'])->name('contact');
+    Route::post('contact',[\App\Http\Controllers\HomeController::class,'updateContact']);
     Route::get('document',[\App\Http\Controllers\HomeController::class,'document'])->name('document');
     Route::post('document',[\App\Http\Controllers\HomeController::class,'updateDocument']);
 });

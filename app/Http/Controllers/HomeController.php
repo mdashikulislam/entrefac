@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Document;
 use App\Models\Profile;
 use App\Models\User;
@@ -105,10 +106,42 @@ class HomeController extends Controller
 
     public function contact()
     {
-
-        return view('contact');
+        $contact = Contact::where('user_id',\Auth::id())->first();
+        return view('contact')
+            ->with([
+                'contact'=>$contact
+            ]);
     }
-
+    private function contactExtracted(Contact $contact, Request $request){
+        $contact->user_id = \Auth::id();
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->website = $request->website;
+        $contact->twitter = $request->twitter;
+        $contact->facebook = $request->facebook;
+        $contact->instagram = $request->instagram;
+        $contact->country = $request->country;
+        $contact->state = $request->state;
+        $contact->description = $request->description;
+        $contact->city = $request->city;
+        $contact->street = $request->street;
+        $contact->apartment = $request->apartment;
+        $contact->support = $request->support;
+        $contact->dispute = $request->dispute;
+    }
+    public function updateContact(Request $request)
+    {
+        $contact = Contact::where('user_id',\Auth::id())->first();
+        if ($contact){
+            $this->contactExtracted($contact,$request);
+        }else{
+            $contact = new Contact();
+            $this->contactExtracted($contact,$request);
+        }
+        $contact->save();
+        toast('Contact Update successful','success');
+        return redirect()->back();
+    }
     public function document()
     {
         $document = Document::where('user_id',\Auth::id())->first();
