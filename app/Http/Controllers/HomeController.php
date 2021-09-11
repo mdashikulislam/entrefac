@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -100,5 +101,25 @@ class HomeController extends Controller
         $profile->save();
         toast('Profile Update successfully','success');
         return redirect()->back();
+    }
+
+    public function contact()
+    {
+
+        return view('contact');
+    }
+
+    public function document()
+    {
+        $document = Document::where('user_id',\Auth::id())->first();
+        return view('document')
+            ->with([
+                'document'=>$document
+            ]);
+    }
+
+    public function updateDocument(Request $request)
+    {
+        return $request->all();
     }
 }

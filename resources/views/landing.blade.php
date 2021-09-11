@@ -13,10 +13,10 @@
                     <a class="btn btn-success custom-btn" href="{{route('profile')}}">Profile</a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-12">
-                    <a class="btn btn-success custom-btn" href="{{route('landing')}}">Contact</a>
+                    <a class="btn btn-success custom-btn" href="{{route('contact')}}">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-12">
-                    <a class="btn btn-success custom-btn" href="{{route('landing')}}">Document</a>
+                    <a class="btn btn-success custom-btn" href="{{route('document')}}">Document</a>
                 </div>
             </div>
         </div>

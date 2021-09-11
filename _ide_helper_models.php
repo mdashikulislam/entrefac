@@ -12,6 +12,26 @@
 
 namespace App\Models{
 /**
+ * App\Models\Document
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string|null $business_plan
+ * @property string|null $c_in_c
+ * @property string|null $form_3
+ * @property string|null $tin
+ * @property string|null $other
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Document newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Document query()
+ */
+	class Document extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Profile
  *
  * @property int $id
