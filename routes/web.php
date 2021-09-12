@@ -34,6 +34,7 @@ Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
     Route::get('entrepreneurs',[\App\Http\Controllers\HomeController::class,'entrepreneurs'])->name('entrepreneurs');
     Route::get('account/change_status/{id}/{status}',[\App\Http\Controllers\HomeController::class,'accountStatusChange'])->name('account.status.change');
     Route::get('profile/{id}',[\App\Http\Controllers\HomeController::class,'profileSingle'])->name('profile.single');
+    Route::get('donor',[\App\Http\Controllers\HomeController::class,'donor'])->name('donor');
 });
 Route::middleware('auth')->middleware('role:'.USER)->group(function (){
     Route::get('donate',[\App\Http\Controllers\HomeController::class,'donate'])->name('donate');

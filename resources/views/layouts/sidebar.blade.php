@@ -69,6 +69,14 @@ $currentRoute = Route::currentRouteName();
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('donor')}}" class="nav-link {{$currentRoute == 'donor' ? 'active':''}}">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                                Donor
+                            </p>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </nav>

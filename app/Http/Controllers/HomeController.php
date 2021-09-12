@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Document;
+use App\Models\Donar;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -256,5 +257,13 @@ class HomeController extends Controller
             ->with([
                 'user'=>$user
             ]);
+    }
+
+    public function donor()
+    {
+        $donors = Donar::orderByDesc('created_at')->get();
+        return view('donor')->with([
+            'donors'=>$donors
+        ]);
     }
 }

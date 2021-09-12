@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('title')
-    Entrepreneurs
+    Donor
 @endsection
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">User List</h3>
+            <h3 class="card-title">Donor List</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -13,32 +13,26 @@
                 <thead>
                 <tr>
                     <th>SL</th>
-                    <th>Trading Name</th>
-                    <th>StaffP Size</th>
-                    <th>Industry</th>
+                    <th>Reference Id </th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Amount</th>
+                    <th>Payment Status </th>
                     <th>Time</th>
                     <th>Date</th>
-                    <th>View</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($entrepreneurs as $entrepreneur)
+                @forelse($donors as $donor)
                     <tr>
                         <td>{{$loop->index + 1}}</td>
-                        <td>{{@$entrepreneur->trading_name}}</td>
-                        <td>{{@$entrepreneur->stuff_size}}</td>
-                        <td>{{@$entrepreneur->industry}}</td>
-                        <td>{{@$entrepreneur->created_at ? \Carbon\Carbon::parse(@$entrepreneur->created_at)->isoFormat('hh:ss A') :''}}</td>
-                        <td>{{@$entrepreneur->created_at ? \Carbon\Carbon::parse(@$entrepreneur->created_at)->isoFormat('Do, MMM YYYY') :''}}</td>
-                        <td><a href="{{route('profile.single',['id'=>@$entrepreneur->user_id ? :0])}}" class="btn btn btn-color text-white">Profile</a></td>
-                        <td>
-                            @if(@$entrepreneur->users->account_status == 'Pending')
-                                <a href="{{route('account.status.change',['id'=>@$entrepreneur->user_id ? :0,'status'=>1])}}" class="btn btn-success custom-btn-green">Verify</a>
-                            @elseif(@$entrepreneur->users->account_status == 'Approved')
-                                <a href="{{route('account.status.change',['id'=>@$entrepreneur->user_id ? :0,'status'=>0])}}" class="btn btn-danger custom-btn-danger">Un Verify</a>
-                            @endif
-                        </td>
+                        <td>{{$donor->reference_id}}</td>
+                        <td>{{$donor->name}}</td>
+                        <td>{{$donor->email}}</td>
+                        <td>{{$donor->amount}}</td>
+                        <td>{{$donor->status}}</td>
+                        <td>{{\Carbon\Carbon::parse($donor->created_at)->isoFormat('hh:ss A')}}</td>
+                        <td>{{\Carbon\Carbon::parse($donor->created_at)->isoFormat('Do, MMM YYYY')}}</td>
                     </tr>
                 @empty
                 @endforelse
