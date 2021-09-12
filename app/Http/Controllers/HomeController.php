@@ -66,6 +66,7 @@ class HomeController extends Controller
         if ($request->password){
             $user->password = Hash::make($request->password);
         }
+        $user->save();
         toast('Account update successfully','success');
         return redirect()->route('landing');
     }

@@ -20,7 +20,7 @@ class AjaxController extends Controller
             $donate->amount = $request->amount;
             $donate->reference_id = $request->reference;
             $donate->email = $request->email;
-            $donate->name = 'ass';
+            $donate->name = $request->first_name.' '.$request->last_name;
             $donate->status = $request->status;
             $donate->save();
             if ($donate->save()){
