@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
@@ -241,6 +242,19 @@ class HomeController extends Controller
         return view('donate')
             ->with([
                 'user'=>\Auth::user()
+            ]);
+    }
+
+    public function myProfile()
+    {
+        $user = User::with('profile')->with('contact')->where('id',Auth::id())->first();
+        if (empty($user)){
+            toast('User not found','error');
+            return redirect()->route('entrepreneurs');
+        }
+        return view('profile_single')
+            ->with([
+                'user'=>$user
             ]);
     }
 }

@@ -43,6 +43,14 @@ $currentRoute = Route::currentRouteName();
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('my.profile')}}" class="nav-link {{$currentRoute == 'my.profile' ? 'active':''}}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Profile
+                            </p>
+                        </a>
+                    </li>
                 @endif
                 @if($roleName === ADMIN)
                     <li class="nav-item">

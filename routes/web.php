@@ -37,6 +37,7 @@ Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
 });
 Route::middleware('auth')->middleware('role:'.USER)->group(function (){
     Route::get('donate',[\App\Http\Controllers\HomeController::class,'donate'])->name('donate');
+    Route::get('my-profile',[\App\Http\Controllers\HomeController::class,'myProfile'])->name('my.profile');
 });
 
 Route::post('payment',[\App\Http\Controllers\AjaxController::class,'payment'])->name('payment');
