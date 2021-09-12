@@ -3,9 +3,17 @@
     Donate
 @endsection
 @section('content')
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-6 col-lg-6 col-12">
             <div class="card">
+                <div class="card-header">
+                    @if($user->account_status == 'Approved')
+                    <h4>Donate for factory challenge</h4>
+                    @elseif($user->account_status == 'Pending')
+                        <h4 style="color: red">You account is not approve. please wait ... </h4>
+                    @endif
+                </div>
+                @if($user->account_status == 'Approved')
                 <div class="card-body">
                     <form id="paymentForm" action="" method="POST">
                         <input type="hidden" name="user_id" value="{{Auth::id()}}" id="user_id">
@@ -65,6 +73,7 @@
                         </div>
                     </form>
                 </div>
+                @endif
             </div>
         </div>
     </div>
