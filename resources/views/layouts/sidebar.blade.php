@@ -52,10 +52,35 @@ $currentRoute = Route::currentRouteName();
                         </a>
                     </li>
                 @endif
-
             </ul>
         </nav>
+        @if(getAuthRoleName() == USER)
+            <div class="accounts mt-5">
+                <h4>Account Status</h4>
+                @if(Auth::user()->account_status == 'Pending')
+                    <p style="color: #fd8977">Pending Approval</p>
+                @elseif(Auth::user()->account_status == 'Approved')
+                    @if(Auth::user()->payment_status == 'Pending')
+                        <p style="margin: 0;color: #979797">Account approved</p>
+                        <p style="margin: 0;color: #979797">Pending Payment:</p>
+                        <a href="" class="d-block" style="color: limegreen;font-weight:bold;font-size: 22px;">Pay Now</a>
+                        <p style="color: #fff">to join the challenge or leave it if you wish to pay later</p>
+                    @elseif(Auth::user()->payment_status == 'Approved')
+                        <p style="margin: 0;color: #979797">Account approved</p>
+                        <p style="color: limegreen;font-weight:bold;font-size: 22px;">for factory challenge.</p>
+                    @endif
+                @endif
+            </div>
+        @endif
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
 </aside>
+<style>
+    .accounts{
+        text-align: center;
+    }
+    .accounts h4{
+        color: #fff;
+    }
+</style>
