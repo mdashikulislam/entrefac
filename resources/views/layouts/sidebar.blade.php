@@ -77,6 +77,14 @@ $currentRoute = Route::currentRouteName();
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('setting')}}" class="nav-link {{$currentRoute == 'setting' ? 'active':''}}">
+                            <i class="nav-icon fa fa-cog"></i>
+                            <p>
+                                Setting
+                            </p>
+                        </a>
+                    </li>
                 @endif
             </ul>
         </nav>

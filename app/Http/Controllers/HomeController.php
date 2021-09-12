@@ -266,4 +266,35 @@ class HomeController extends Controller
             'donors'=>$donors
         ]);
     }
+
+    public function setting()
+    {
+        $users = User::whereHas('roles',function ($role){
+            $role->where('name',ADMIN);
+        })->get();
+        return view('setting')
+            ->with([
+                'users'=>$users
+            ]);
+    }
+
+    public function addAdmin(Request $request)
+    {
+        $this->validate($request,[
+           'first_name'=>['required','max:191'],
+           'last_name'=>['required','max:191'],
+            'email'=>['required','email','unique:users','max:191'],
+            'password' => ['required', 'string', 'min:8','confirmed']
+        ]);
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->account_status = 'Approved';
+        $user->save();
+        $user->assignRole(ADMIN);
+        toast('Admin added successfully','success');
+        return redirect()->back();
+    }
 }
