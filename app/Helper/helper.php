@@ -257,6 +257,9 @@ function countryArray(){
     );
     return $countries;
 }
+function getCountryNameByCode($code = ''){
+    return countryArray()[$code];
+}
 function getCountryDropdown($selected = ''){
     $html = '';
     foreach (countryArray() as $key =>$value){
@@ -278,4 +281,7 @@ function uploadSingleFile($request = null, $path = '', $prefix = ''): string
     $file->storeAs($destination,$fileName,'public');
     $fileNameWithDestination = $destination . '/'.$fileName;
     return $fileNameWithDestination;
+}
+function getAuthRoleName(){
+    return Auth::user()->getRoleNames()[0];
 }

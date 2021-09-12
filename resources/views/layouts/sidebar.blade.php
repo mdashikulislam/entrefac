@@ -1,3 +1,8 @@
+@php
+$roleName = getAuthRoleName();
+$currentRoute = Route::currentRouteName();
+@endphp
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('landing')}}" class="brand-link">
@@ -21,14 +26,33 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="{{route('landing')}}" class="nav-link">
+                <li class="nav-item">
+                    <a href="{{route('landing')}}" class="nav-link {{$currentRoute == 'landing' || $currentRoute == 'profile' || $currentRoute == 'document' || $currentRoute == 'contact' ? 'active':''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
+                @if($roleName === ADMIN)
+                    <li class="nav-item">
+                        <a href="{{route('user')}}" class="nav-link {{$currentRoute == 'user' ? 'active':''}}">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                                Users
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('entrepreneurs')}}" class="nav-link {{$currentRoute == 'entrepreneurs' ? 'active':''}}">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                                Entrepreneurs
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -29,3 +29,8 @@ Route::middleware('auth')->middleware('role:'.USER.'|'.ADMIN)->group(function ()
     Route::get('document',[\App\Http\Controllers\HomeController::class,'document'])->name('document');
     Route::post('document',[\App\Http\Controllers\HomeController::class,'updateDocument']);
 });
+Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
+    Route::get('user',[\App\Http\Controllers\HomeController::class,'userList'])->name('user');
+    Route::get('entrepreneurs',[\App\Http\Controllers\HomeController::class,'entrepreneurs'])->name('entrepreneurs');
+    Route::get('account/change_status/{id}/{status}',[\App\Http\Controllers\HomeController::class,'accountStatusChange'])->name('account.status.change');
+});

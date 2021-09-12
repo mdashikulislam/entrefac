@@ -181,4 +181,45 @@ class HomeController extends Controller
         toast('Document upload successfully','success');
         return redirect()->back();
     }
+    public function userList()
+    {
+        $user = User::role(\USER)->orderBy('created_at','DESC')->get();
+        return view('users')
+            ->with([
+                'users'=>$user
+            ]);
+    }
+
+    public function entrepreneurs()
+    {
+        $entrepreneurs = Profile::with('users')->whereHas('users',function ($users){
+            $users->whereHas('roles',function ($role){
+                $role->where('name',\USER);
+            });
+        })->orderByDesc('created_at')->get();
+        return view('entrepreneurs')
+            ->with([
+                'entrepreneurs'=>$entrepreneurs
+            ]);
+    }
+
+    public function accountStatusChange($id,$status)
+    {
+        $user = User::findOrFail($id);
+        if ($user){
+           switch ($status){
+               case 1:
+                   $user->account_status = 'Approved';
+                   break;
+               default:
+                   $user->account_status = 'Pending';
+           }
+            $user->save();
+            toast('Account status change successfully','success');
+            return redirect()->back();
+        }else{
+            toast('Account not found','error');
+            return redirect()->back();
+        }
+    }
 }

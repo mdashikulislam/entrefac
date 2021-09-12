@@ -21,6 +21,42 @@
 <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 <style>
+    .custom-btn-danger{
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 5px 20px;
+        background: transparent;
+        color: #ff0000;
+        border-color: #ff0000;
+    }
+    .custom-btn-danger.active{
+        color: #fff;
+        background: #ff0000!important;
+        border-color: #ff0000!important;
+    }
+    .custom-btn-danger:hover{
+        background: #ff0000!important;
+        border-color: #ff0000!important;
+    }
+    .custom-btn-green{
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 5px 20px;
+        background: transparent;
+        color: #57B657;
+        border-color: #57B657;
+    }
+    .custom-btn-green.active{
+        color: #fff;
+        background: #57B657!important;
+        border-color: #57B657!important;
+    }
+    .custom-btn-green:hover{
+        background:#57B657!important;
+        border-color: #57B657!important;
+    }
     .custom-btn{
         border-radius: 50px;
         font-weight: bold;
