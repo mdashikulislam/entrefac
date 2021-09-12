@@ -35,6 +35,10 @@
         background: #ff0000!important;
         border-color: #ff0000!important;
     }
+    .custom-btn-danger:focus{
+        color: #ff0000;
+        border-color: #ff0000;
+    }
     .custom-btn-danger:hover{
         background: #ff0000!important;
         border-color: #ff0000!important;
@@ -45,6 +49,10 @@
         font-size: 20px;
         padding: 5px 20px;
         background: transparent;
+        color: #57B657;
+        border-color: #57B657;
+    }
+    .custom-btn-green:focus{
         color: #57B657;
         border-color: #57B657;
     }

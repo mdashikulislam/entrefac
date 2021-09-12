@@ -45,7 +45,7 @@
                                 <input readonly value="{{$user->email}}" id="email" name="email" type="text" class="form-control @error('email') is-invalid @enderror">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
-                                        <span class="fas fa-briefcase"></span>
+                                        <span class="fas fa-envelope"></span>
                                     </div>
                                 </div>
                             </div>
@@ -119,13 +119,23 @@
                                     Swal.fire({
                                         icon: 'success',
                                         title: 'Great...',
-                                        text: res.message
+                                        text: res.message,
+                                        confirmButtonColor: '#4B49AC',
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location = '{{route('donate')}}';
+                                        }
                                     })
                                 }else{
                                     Swal.fire({
                                         icon: 'error',
                                         title: 'Oops...',
-                                        text: res.message
+                                        text: res.message,
+                                        confirmButtonColor: '#4B49AC',
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location = '{{route('donate')}}';
+                                        }
                                     })
                                 }
                             }
