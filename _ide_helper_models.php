@@ -61,6 +61,26 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Donar
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $reference_id
+ * @property string $email
+ * @property string $name
+ * @property string $amount
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Donar newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Donar newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Donar query()
+ */
+	class Donar extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Profile
  *
  * @property int $id
@@ -75,6 +95,7 @@ namespace App\Models{
  * @property string|null $registration_type
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $users
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Profile query()
@@ -101,8 +122,11 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $account_status
  * @property string $payment_status
+ * @property-read \App\Models\Contact $contact
+ * @property-read \App\Models\Document $document
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read \App\Models\Profile $profile
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @method static \Database\Factories\UserFactory factory(...$parameters)

@@ -235,4 +235,12 @@ class HomeController extends Controller
                 'user'=>$user
             ]);
     }
+
+    public function donate()
+    {
+        return view('donate')
+            ->with([
+                'user'=>\Auth::user()
+            ]);
+    }
 }

@@ -35,12 +35,12 @@
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content pt-5">
-            <div class="container-fluid">
+            <div class="container-fluid" >
                 @section('content')
                 @show
             </div>
         </section>
-        <!-- /.content -->
+
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
