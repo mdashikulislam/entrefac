@@ -31,7 +31,7 @@
                         <td>{{@$entrepreneur->industry}}</td>
                         <td>{{@$entrepreneur->created_at ? \Carbon\Carbon::parse(@$entrepreneur->created_at)->isoFormat('h:s A') :''}}</td>
                         <td>{{@$entrepreneur->created_at ? \Carbon\Carbon::parse(@$entrepreneur->created_at)->isoFormat('Do, MMM YYYY') :''}}</td>
-                        <td><a href="" class="btn btn btn-color text-white">Profile</a></td>
+                        <td><a href="{{route('profile.single',['id'=>@$entrepreneur->user_id ? :0])}}" class="btn btn btn-color text-white">Profile</a></td>
                         <td>
                             @if(@$entrepreneur->users->account_status == 'Pending')
                                 <a href="{{route('account.status.change',['id'=>@$entrepreneur->user_id ? :0,'status'=>1])}}" class="btn btn-success custom-btn-green">Verify</a>

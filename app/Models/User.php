@@ -47,4 +47,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class,'id','user_id');
+    }
+
+    public function contact()
+    {
+        return $this->belongsTo(Contact::class,'id','user_id');
+    }
+
+    public function document()
+    {
+        return $this->belongsTo(Document::class,'id','user_id');
+    }
 }

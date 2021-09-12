@@ -222,4 +222,17 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
+
+    public function profileSingle($id)
+    {
+        $user = User::with('profile')->with('contact')->where('id',$id)->first();
+        if (empty($user)){
+            toast('User not found','error');
+            return redirect()->route('entrepreneurs');
+        }
+        return view('profile_single')
+            ->with([
+                'user'=>$user
+            ]);
+    }
 }

@@ -33,4 +33,5 @@ Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
     Route::get('user',[\App\Http\Controllers\HomeController::class,'userList'])->name('user');
     Route::get('entrepreneurs',[\App\Http\Controllers\HomeController::class,'entrepreneurs'])->name('entrepreneurs');
     Route::get('account/change_status/{id}/{status}',[\App\Http\Controllers\HomeController::class,'accountStatusChange'])->name('account.status.change');
+    Route::get('profile/{id}',[\App\Http\Controllers\HomeController::class,'profileSingle'])->name('profile.single');
 });
