@@ -33,6 +33,7 @@
                     <p class="login-box-msg">Register a new membership</p>
                     <form action="{{route('register')}}" method="post">
                         @csrf
+                        <input type="hidden" name="referral" value="{{request()->input('referral') ? :null}}">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="form-group">
@@ -202,3 +203,4 @@
 </script>
 </body>
 </html>
+@include('sweetalert::alert')

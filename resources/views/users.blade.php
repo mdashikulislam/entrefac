@@ -21,6 +21,7 @@
                     <th>Phone</th>
                     <th>Payment Status</th>
                     <th>Account Status</th>
+                    <th>Referral</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,7 @@
                             <td>{{$user->phone}}</td>
                             <td>{{$user->payment_status}}</td>
                             <td>{{$user->account_status}}</td>
+                            <td>{{@$user->referral_code}}</td>
                         </tr>
                     @empty
                     @endforelse
@@ -59,7 +61,7 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": false,
+            "autoWidth": true,
             "responsive": true,
         });
     </script>

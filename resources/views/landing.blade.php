@@ -119,7 +119,7 @@
                     <div class="form-group">
                         <label for="password">{{ __('Password') }}</label>
                         <div class="input-group mb-3">
-                            <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" >
+                            <input  id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" >
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>

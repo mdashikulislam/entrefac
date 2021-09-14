@@ -285,3 +285,21 @@ function uploadSingleFile($request = null, $path = '', $prefix = ''): string
 function getAuthRoleName(){
     return Auth::user()->getRoleNames()[0];
 }
+
+function generateReferralCode():string{
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersNumber = strlen($characters);
+    $codeLength = 6;
+
+    $code = '';
+
+    while (strlen($code) < 6) {
+        $position = rand(0, $charactersNumber - 1);
+        $character = $characters[$position];
+        $code = $code.$character;
+    }
+    if (\App\Models\User::where('my_code',$code)->exists()){
+        generateReferralCode();
+    }
+    return $code;
+}

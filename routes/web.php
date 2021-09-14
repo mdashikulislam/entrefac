@@ -30,7 +30,7 @@ Route::middleware('auth')->middleware('role:'.USER.'|'.ADMIN)->group(function ()
     Route::post('document',[\App\Http\Controllers\HomeController::class,'updateDocument']);
 });
 Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
-    Route::get('user',[\App\Http\Controllers\HomeController::class,'userList'])->name('user');
+    Route::get('users',[\App\Http\Controllers\HomeController::class,'userList'])->name('user');
     Route::get('entrepreneurs',[\App\Http\Controllers\HomeController::class,'entrepreneurs'])->name('entrepreneurs');
     Route::get('account/change_status/{id}/{status}',[\App\Http\Controllers\HomeController::class,'accountStatusChange'])->name('account.status.change');
     Route::get('profile/{id}',[\App\Http\Controllers\HomeController::class,'profileSingle'])->name('profile.single');
@@ -41,6 +41,7 @@ Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
 Route::middleware('auth')->middleware('role:'.USER)->group(function (){
     Route::get('donate',[\App\Http\Controllers\HomeController::class,'donate'])->name('donate');
     Route::get('my-profile',[\App\Http\Controllers\HomeController::class,'myProfile'])->name('my.profile');
+    Route::get('referral',[\App\Http\Controllers\HomeController::class,'referral'])->name('referral');
 });
 
 Route::post('payment',[\App\Http\Controllers\AjaxController::class,'payment'])->name('payment');

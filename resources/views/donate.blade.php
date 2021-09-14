@@ -87,7 +87,7 @@
         function payWithPaystack(e) {
             e.preventDefault();
             let handler = PaystackPop.setup({
-                key: 'pk_test_a51e799aec807a51a5f226fa888f13b98c32d442', // Replace with your public key
+                key: '{{getenv('PAYSTACK_KEY')}}', // Replace with your public key
                 email: $('#email').val(),
                 currency: 'GHS',
                 amount: ($('#amount').val()) * 100,

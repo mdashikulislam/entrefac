@@ -51,6 +51,14 @@ $currentRoute = Route::currentRouteName();
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('referral')}}" class="nav-link {{$currentRoute == 'referral' ? 'active':''}}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Referral
+                            </p>
+                        </a>
+                    </li>
                 @endif
                 @if($roleName === ADMIN)
                     <li class="nav-item">

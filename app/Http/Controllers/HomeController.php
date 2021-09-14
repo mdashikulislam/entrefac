@@ -260,6 +260,10 @@ class HomeController extends Controller
             ]);
     }
 
+    public function referral()
+    {
+        return view('referral');
+    }
     public function donor()
     {
         $donors = Donar::orderByDesc('created_at')->get();

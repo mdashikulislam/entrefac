@@ -26,7 +26,9 @@ class User extends Authenticatable
         'country',
         'business_name',
         'phone',
-        'registered_business'
+        'registered_business',
+        'my_code',
+        'referral_code'
     ];
 
     /**

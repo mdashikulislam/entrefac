@@ -80,6 +80,8 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'registered_business' => $data['registered_business'],
             'password' => Hash::make($data['password']),
+            'my_code'=>generateReferralCode(),
+            'referral_code'=>$data['referral'] ? :null
         ]);
     }
     public function showRegistrationForm()
@@ -89,7 +91,12 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
+        if (isset($request->referral)){
+            if (!User::where('my_code',$request->referral)->exists()){
+                toast('Wrong Referral Code','error');
+                return \redirect()->route('register');
+            }
+        }
         event(new Registered($user = $this->create($request->all())));
         $user->assignRole(USER);
         $this->guard()->login($user);
