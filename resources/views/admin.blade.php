@@ -34,7 +34,7 @@
             <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{number_format(\App\Models\Donar::count())}}</h3>
-                    <p>Total Donors</p>
+                    <p>Total Payments</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
