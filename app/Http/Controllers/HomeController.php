@@ -35,10 +35,27 @@ class HomeController extends Controller
 
     public function landing()
     {
-        return view('landing')
-            ->with([
-                'user'=>\Auth::user()
-            ]);
+
+        if (getAuthRoleName() == ADMIN){
+            $users = User::role(\USER)->count();
+            $entrepreneurs = Profile::with('users')->whereHas('users',function ($users){
+                $users->whereHas('roles',function ($role){
+                    $role->where('name',\USER);
+                });
+            })->orderByDesc('created_at')->count();
+            $totalAmount = Donar::sum('amount');
+            return view('admin')
+                ->with([
+                    'users'=>$users,
+                    'entrepreneurs'=>$entrepreneurs,
+                    'amount'=>$totalAmount
+                ]);
+        }else{
+            return view('landing')
+                ->with([
+                    'user'=>\Auth::user()
+                ]);
+        }
     }
 
     public function accountUpdate(Request $request)
