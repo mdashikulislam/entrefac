@@ -39,7 +39,7 @@ $currentRoute = Route::currentRouteName();
                         <a href="{{route('donate')}}" class="nav-link {{$currentRoute == 'donate' ? 'active':''}}">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Donate
+                                Payment
                             </p>
                         </a>
                     </li>
@@ -81,7 +81,7 @@ $currentRoute = Route::currentRouteName();
                         <a href="{{route('donor')}}" class="nav-link {{$currentRoute == 'donor' ? 'active':''}}">
                             <i class="nav-icon fa fa-users"></i>
                             <p>
-                                Donor
+                                Payments
                             </p>
                         </a>
                     </li>

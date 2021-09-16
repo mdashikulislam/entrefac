@@ -34,12 +34,12 @@ Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
     Route::get('entrepreneurs',[\App\Http\Controllers\HomeController::class,'entrepreneurs'])->name('entrepreneurs');
     Route::get('account/change_status/{id}/{status}',[\App\Http\Controllers\HomeController::class,'accountStatusChange'])->name('account.status.change');
     Route::get('profile/{id}',[\App\Http\Controllers\HomeController::class,'profileSingle'])->name('profile.single');
-    Route::get('donor',[\App\Http\Controllers\HomeController::class,'donor'])->name('donor');
+    Route::get('payments',[\App\Http\Controllers\HomeController::class,'donor'])->name('donor');
     Route::get('setting',[\App\Http\Controllers\HomeController::class,'setting'])->name('setting');
     Route::post('add-admin',[\App\Http\Controllers\HomeController::class,'addAdmin'])->name('add.admin');
 });
 Route::middleware('auth')->middleware('role:'.USER)->group(function (){
-    Route::get('donate',[\App\Http\Controllers\HomeController::class,'donate'])->name('donate');
+    Route::get('payment',[\App\Http\Controllers\HomeController::class,'donate'])->name('donate');
     Route::get('my-profile',[\App\Http\Controllers\HomeController::class,'myProfile'])->name('my.profile');
     Route::get('referral',[\App\Http\Controllers\HomeController::class,'referral'])->name('referral');
 });
