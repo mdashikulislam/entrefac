@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <label for="first_name">First Name</label>
                             <div class="input-group mb-3">
-                                <input id="first_name" name="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" placeholder="Enter First Name">
+                                <input value="{{old('first_name')}}" id="first_name" name="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" placeholder="Enter First Name">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-user"></span>
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
                             <div class="input-group mb-3">
-                                <input id="last_name" name="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Enter Last Name">
+                                <input value="{{old('last_name')}}" id="last_name" name="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Enter Last Name">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-user"></span>
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label for="email">Email Address</label>
                             <div class="input-group mb-3">
-                                <input id="email" name="email" type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email Address">
+                                <input id="email" value="{{old('email')}}" name="email" type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email Address">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-envelope"></span>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password-confirm">{{ __('Password') }}</label>
+                            <label for="password-confirm">{{ __('Confirm Password') }}</label>
                             <div class="input-group mb-3">
                                 <input id="password-confirm" name="password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" >
                                 <div class="input-group-append">
@@ -105,6 +105,7 @@
                                 <th>SL</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,6 +114,32 @@
                                 <td>{{$loop->index +1 }}</td>
                                 <td>{{$user->first_name.' '.$user->last_name}}</td>
                                 <td>{{$user->email}}</td>
+                                <td>
+                                    @if(Auth::id() != $user->id)
+                                        <a  href="{{route('user.delete',['id'=>$user->id])}}" class="btn btn-danger btn-sm d-inline-block delete-user">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                        @if($user->status == 'Suspend')
+                                            <form class="d-none" id="status-{{$user->id}}" action="{{route('user.status')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$user->id}}">
+                                                <input type="hidden" name="status" value="Active">
+                                            </form>
+                                            <button data-toggle="tooltip" data-placement="top" title="Active" onclick="statusChange('{{$user->id}}')" type="button" class="btn btn-success btn-sm">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        @else
+                                            <form class="d-none" id="status-{{$user->id}}" action="{{route('user.status')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$user->id}}">
+                                                <input type="hidden" name="status" value="Suspend">
+                                            </form>
+                                            <button data-toggle="tooltip" data-placement="top" title="Suspend"  onclick="statusChange('{{$user->id}}')" type="button"  class="btn btn-warning text-white btn-sm">
+                                                <i class="fa fa-eye-slash"></i>
+                                            </button>
+                                        @endif
+                                    @endif
+                                </td>
                             </tr>
                         @empty
                         @endforelse
@@ -142,5 +169,40 @@
             "autoWidth": false,
             "responsive": true,
         });
+        function statusChange(id){
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to change the status!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#status-'+id).submit();
+                }
+            })
+        }
+        $(document).ready(function (){
+            $(document).on('click','.delete-user',function (){
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = $(this).attr('href');
+                    }
+                })
+            })
+
+        })
     </script>
 @endpush

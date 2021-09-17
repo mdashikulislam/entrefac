@@ -64,6 +64,9 @@
                                         <i class="fa fa-eye-slash"></i>
                                     </button>
                                 @endif
+                                <a data-toggle="tooltip" data-placement="top" title="Password reset" href="{{route('user.reset.password',['id'=>$user->id])}}" class="btn btn-info btn-sm d-inline-block">
+                                    <i class="fa fa-key"></i>
+                                </a>
                             </td>
                         </tr>
                     @empty
@@ -92,7 +95,7 @@
             scrollCollapse: true,
             paging:         true,
             columnDefs: [
-                { width: 100, targets: -1 },
+                { width: 130, targets: -1 },
                 { width: 75, targets:  1},
                 { width: 75, targets:  2},
                 { width: 105, targets:  4},

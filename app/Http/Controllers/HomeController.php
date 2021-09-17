@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class HomeController extends Controller
 {
@@ -346,6 +347,18 @@ class HomeController extends Controller
             }
             $user->save();
             toast('status change successfully','success');
+        }else{
+            toast('User not found','error');
+        }
+        return redirect()->back();
+    }
+
+    public function userPasswordReset($id)
+    {
+        $user = User::findOrFail($id);
+        if ($user){
+            $token = Password::getRepository()->create($user);
+            $user->sendPasswordResetNotification($token);
         }else{
             toast('User not found','error');
         }

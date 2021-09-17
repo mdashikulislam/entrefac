@@ -93,3 +93,4 @@
 <script src="{{asset('assets/dist/js/adminlte.min.js')}}"></script>
 </body>
 </html>
+@include('sweetalert::alert')

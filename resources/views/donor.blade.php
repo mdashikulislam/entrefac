@@ -9,14 +9,14 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="example2" class="table table-bordered table-hover">
+            <table id="example2" class="table table-bordered table-hover text-center">
                 <thead>
                 <tr>
                     <th>SL</th>
                     <th>Reference Id </th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Amount</th>
+                    <th>Amount(GHS)</th>
                     <th>Payment Status </th>
                     <th>Time</th>
                     <th>Date</th>
@@ -29,7 +29,7 @@
                         <td>{{$donor->reference_id}}</td>
                         <td>{{$donor->name}}</td>
                         <td>{{$donor->email}}</td>
-                        <td>{{$donor->amount}}</td>
+                        <td>{{number_format($donor->amount)}}</td>
                         <td>{{$donor->status}}</td>
                         <td>{{\Carbon\Carbon::parse($donor->created_at)->isoFormat('hh:ss A')}}</td>
                         <td>{{\Carbon\Carbon::parse($donor->created_at)->isoFormat('Do, MMM YYYY')}}</td>
