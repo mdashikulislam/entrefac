@@ -43,7 +43,7 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <input value="{{old('email')}}" name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                    <input  name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -73,7 +73,7 @@
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="forgot-password.html">I forgot my password</a>
+                <a href="{{route('password.request')}}">I forgot my password</a>
             </p>
             <p class="mb-0">
                 <a href="{{route('register')}}" class="text-center">Register a new membership</a>
