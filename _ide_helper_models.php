@@ -122,6 +122,9 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $account_status
  * @property string $payment_status
+ * @property string|null $my_code
+ * @property string|null $referral_code
+ * @property string $status
  * @property-read \App\Models\Contact $contact
  * @property-read \App\Models\Document $document
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications

@@ -45,9 +45,25 @@
                                 <a href="" class="btn btn-primary btn-sm d-inline-block">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="" class="btn btn-success btn-sm">
-                                    <i class="fa fa-eye"></i>
-                                </a>
+                                @if($user->status == 'Suspend')
+                                    <form class="d-none" id="status-{{$user->id}}" action="{{route('user.status')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                        <input type="hidden" name="status" value="Active">
+                                    </form>
+                                    <button data-toggle="tooltip" data-placement="top" title="Active" onclick="statusChange('{{$user->id}}')" type="button" class="btn btn-success btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                @else
+                                    <form class="d-none" id="status-{{$user->id}}" action="{{route('user.status')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$user->id}}">
+                                        <input type="hidden" name="status" value="Suspend">
+                                    </form>
+                                    <button data-toggle="tooltip" data-placement="top" title="Suspend"  onclick="statusChange('{{$user->id}}')" type="button"  class="btn btn-warning text-white btn-sm">
+                                        <i class="fa fa-eye-slash"></i>
+                                    </button>
+                                @endif
                             </td>
                         </tr>
                     @empty
@@ -102,6 +118,23 @@
                     }
                 })
             })
+
         })
+        function statusChange(id){
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to change the status!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#status-'+id).submit();
+                }
+            })
+        }
     </script>
 @endpush

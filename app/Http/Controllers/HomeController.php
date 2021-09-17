@@ -331,4 +331,24 @@ class HomeController extends Controller
         }
         return redirect()->back();
     }
+
+    public function userStatus(Request $request)
+    {
+        $user = User::findOrFail($request->id);
+        if ($user){
+            if ($request->status == 'Suspend'){
+                $user->status = 'Suspend';
+            }else if ($request->status == 'Active'){
+                $user->status = 'Active';
+            }else{
+                toast('status not found','error');
+                return redirect()->back();
+            }
+            $user->save();
+            toast('status change successfully','success');
+        }else{
+            toast('User not found','error');
+        }
+        return redirect()->back();
+    }
 }
