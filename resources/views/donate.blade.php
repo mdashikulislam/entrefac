@@ -79,7 +79,6 @@
     </div>
 @endsection
 @push('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <script>
         const paymentForm = document.getElementById('paymentForm');

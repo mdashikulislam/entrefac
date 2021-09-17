@@ -21,7 +21,6 @@
     </div>
 @endsection
 @push('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function copyToClipboard(element) {
             var $temp = $("<input>");
@@ -40,7 +39,6 @@
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
             })
-
             Toast.fire({
                 icon: 'success',
                 title: 'Copy Successful'

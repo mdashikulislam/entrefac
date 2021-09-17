@@ -37,6 +37,7 @@ Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
     Route::get('payments',[\App\Http\Controllers\HomeController::class,'donor'])->name('donor');
     Route::get('setting',[\App\Http\Controllers\HomeController::class,'setting'])->name('setting');
     Route::post('add-admin',[\App\Http\Controllers\HomeController::class,'addAdmin'])->name('add.admin');
+    Route::get('user/delete/{id}',[\App\Http\Controllers\HomeController::class,'deleteUser'])->name('user.delete');
 });
 Route::middleware('auth')->middleware('role:'.USER)->group(function (){
     Route::get('payment',[\App\Http\Controllers\HomeController::class,'donate'])->name('donate');

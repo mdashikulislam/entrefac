@@ -29,3 +29,4 @@
 <script src="{{asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('assets/dist/js/adminlte.js')}}"></script>
+<script src="{{asset('assets/dist/sweetalert2@11.js')}}"></script>

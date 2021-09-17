@@ -319,4 +319,16 @@ class HomeController extends Controller
         toast('Admin added successfully','success');
         return redirect()->back();
     }
+
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        if ($user){
+            $user->delete();
+            toast('User delete successfully','success');
+        }else{
+            toast('User not found','error');
+        }
+        return redirect()->back();
+    }
 }
