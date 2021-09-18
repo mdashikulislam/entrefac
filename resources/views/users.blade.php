@@ -64,7 +64,7 @@
                                         <i class="fa fa-eye-slash"></i>
                                     </button>
                                 @endif
-                                <a data-toggle="tooltip" data-placement="top" title="Password reset" href="{{route('user.reset.password',['id'=>$user->id])}}" class="btn btn-info btn-sm d-inline-block">
+                                <a data-toggle="tooltip" data-placement="top" title="Password reset" href="{{route('user.reset.password',['id'=>$user->id])}}" class="btn btn-info btn-sm d-inline-block reset">
                                     <i class="fa fa-key"></i>
                                 </a>
                             </td>
@@ -122,6 +122,22 @@
                 })
             })
 
+            $(document).on('click','.reset',function (){
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to send password reset link?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, send it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = $(this).attr('href');
+                    }
+                })
+            })
         })
         function statusChange(id){
             event.preventDefault();

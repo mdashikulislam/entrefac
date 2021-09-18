@@ -359,6 +359,7 @@ class HomeController extends Controller
         if ($user){
             $token = Password::getRepository()->create($user);
             $user->sendPasswordResetNotification($token);
+            toast('Password reset link send','success');
         }else{
             toast('User not found','error');
         }
