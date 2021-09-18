@@ -105,7 +105,7 @@ $currentRoute = Route::currentRouteName();
                     @if(Auth::user()->payment_status == 'Pending')
                         <p style="margin: 0;color: #979797">Account approved</p>
                         <p style="margin: 0;color: #979797">Pending Payment:</p>
-                        <a href="" class="d-block" style="color: limegreen;font-weight:bold;font-size: 22px;">Pay Now</a>
+                        <a href="{{route('payment')}}" class="d-block" style="color: limegreen;font-weight:bold;font-size: 22px;">Pay Now</a>
                         <p style="color: #fff">to join the challenge or leave it if you wish to pay later</p>
                     @elseif(Auth::user()->payment_status == 'Approved')
                         <p style="margin: 0;color: #979797">Account approved</p>

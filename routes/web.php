@@ -40,6 +40,8 @@ Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
     Route::get('user/delete/{id}',[\App\Http\Controllers\HomeController::class,'deleteUser'])->name('user.delete');
     Route::post('user/status',[\App\Http\Controllers\HomeController::class,'userStatus'])->name('user.status');
     Route::get('user/password/reset/{id}',[\App\Http\Controllers\HomeController::class,'userPasswordReset'])->name('user.reset.password');
+    Route::get('user/add',[\App\Http\Controllers\HomeController::class,'userAdd'])->name('user.add');
+    Route::post('user/add',[\App\Http\Controllers\HomeController::class,'storeAdd']);
 });
 Route::middleware('auth')->middleware('role:'.USER)->group(function (){
     Route::get('payment',[\App\Http\Controllers\HomeController::class,'donate'])->name('donate');

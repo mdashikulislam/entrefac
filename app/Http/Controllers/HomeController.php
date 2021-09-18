@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\Donar;
 use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -364,5 +365,30 @@ class HomeController extends Controller
             toast('User not found','error');
         }
         return redirect()->back();
+    }
+
+    public function userAdd()
+    {
+        return view('user-add');
+    }
+
+    public function storeAdd(Request $request)
+    {
+        $this->validate($request,[
+            'first_name'=>['required','max:191'],
+            'last_name'=>['required','max:191'],
+            'email'=>['required','email','unique:users','max:191'],
+            'password' => ['required', 'string', 'min:8','confirmed']
+        ]);
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->account_status = 'Approved';
+        $user->save();
+        $user->assignRole(\USER);
+        toast('User added successfully','success');
+        return redirect()->route('user');
     }
 }

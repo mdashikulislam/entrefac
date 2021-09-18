@@ -3,9 +3,10 @@
     Users
 @endsection
 @section('content')
-    <div class="card">
-        <div class="card-header">
+    <div class="card ">
+        <div class="card-header d-flex justify-content-between align-content-between">
             <h3 class="card-title">User List</h3>
+            <a class="btn btn-success btn-sm" href="{{route('user.add')}}" ><i class="fa fa-plus fa-fw"></i>User Add</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -42,9 +43,9 @@
                                 <a  href="{{route('user.delete',['id'=>$user->id])}}" class="btn btn-danger btn-sm d-inline-block delete-user">
                                     <i class="fa fa-trash"></i>
                                 </a>
-                                <a href="" class="btn btn-primary btn-sm d-inline-block">
-                                    <i class="fa fa-edit"></i>
-                                </a>
+{{--                                <a href="" class="btn btn-primary btn-sm d-inline-block">--}}
+{{--                                    <i class="fa fa-edit"></i>--}}
+{{--                                </a>--}}
                                 @if($user->status == 'Suspend')
                                     <form class="d-none" id="status-{{$user->id}}" action="{{route('user.status')}}" method="POST">
                                         @csrf
@@ -95,7 +96,7 @@
             scrollCollapse: true,
             paging:         true,
             columnDefs: [
-                { width: 130, targets: -1 },
+                { width: 100, targets: -1 },
                 { width: 75, targets:  1},
                 { width: 75, targets:  2},
                 { width: 105, targets:  4},
