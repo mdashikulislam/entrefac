@@ -97,4 +97,9 @@
         border-color: #4B49AC!important;
         color:#4B49AC!important;
     }
+    @media only screen and (min-width: 200px){
+        .navbar-nav .nav-item{
+            display: block!important;
+        }
+    }
 </style>
