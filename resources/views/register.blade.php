@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label for="business_name">Business Name</label>
                                     <div class="input-group mb-3">
-                                        <input id="business_name" name="business_name" type="text" class="form-control @error('business_name') is-invalid @enderror" placeholder="Enter Business Name">
+                                        <input id="business_name" value="{{old('business_name')}}" name="business_name" type="text" class="form-control @error('business_name') is-invalid @enderror" placeholder="Enter Business Name">
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span class="fas fa-briefcase"></span>
@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <label for="first_name">First Name</label>
                                     <div class="input-group mb-3">
-                                        <input id="first_name" name="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" placeholder="Enter First Name">
+                                        <input id="first_name" value="{{old('first_name')}}" name="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" placeholder="Enter First Name">
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span class="fas fa-user"></span>
@@ -82,7 +82,7 @@
                                 <div class="form-group">
                                     <label for="last_name">Last Name</label>
                                     <div class="input-group mb-3">
-                                        <input id="last_name" name="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Enter Last Name">
+                                        <input id="last_name" value="{{old('last_name')}}" name="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Enter Last Name">
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span class="fas fa-user"></span>
@@ -98,7 +98,7 @@
                                 <div class="form-group">
                                     <label for="email">Email Address</label>
                                     <div class="input-group mb-3">
-                                        <input id="email" name="email" type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email Address">
+                                        <input id="email" name="email" value="{{old('email')}}" type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Enter Email Address">
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span class="fas fa-envelope"></span>
@@ -114,7 +114,7 @@
                                 <div class="form-group">
                                     <label for="phone">Phone Number</label>
                                     <div class="input-group mb-3">
-                                        <input id="phone" name="phone" type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter Phone Number">
+                                        <input id="phone" name="phone" value="{{old('phone')}}" type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter Phone Number">
                                         <div class="input-group-append">
                                             <div class="input-group-text">
                                                 <span class="fas fa-mobile"></span>
