@@ -44,9 +44,18 @@ Route::middleware('auth')->middleware('role:'.ADMIN)->group(function (){
     Route::post('user/add',[\App\Http\Controllers\HomeController::class,'storeAdd']);
 });
 Route::middleware('auth')->middleware('role:'.USER)->group(function (){
+    Route::get('account',[\App\Http\Controllers\HomeController::class,'userAccount'])->name('user.account');
     Route::get('payment',[\App\Http\Controllers\HomeController::class,'donate'])->name('donate');
     Route::get('my-profile',[\App\Http\Controllers\HomeController::class,'myProfile'])->name('my.profile');
     Route::get('referral',[\App\Http\Controllers\HomeController::class,'referral'])->name('referral');
 });
 
 Route::post('payment',[\App\Http\Controllers\AjaxController::class,'payment'])->name('payment');
+
+Route::get('cmd-clear',function (){
+    \Artisan::call('optimize:clear');
+
+});
+Route::get('cmd-storage',function (){
+    \Artisan::call('storage:link');
+});

@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     <div class="row">
+        @if(getAuthRoleName() == ADMIN)
         <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
                 <div class="inner">
@@ -33,13 +34,13 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>{{number_format(\App\Models\Donar::count())}}</h3>
-                    <p>Total Payments</p>
+                    <h3 class="text-white">{{number_format(\App\Models\Donar::count())}}</h3>
+                    <p class="text-white">Total Payments</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a  href="#" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-6">
@@ -55,6 +56,34 @@
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+        @else
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3 class="text-white">{{number_format($totalPayment).' (GHS)'}}</h3>
+                        <p class="text-white">Total Payments</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer" style="color: #fff!important;">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>{{$totalReferral}}</h3>
+                        <p>Total Referral</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer ">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        @endif
         <div class="col-md-12">
             <div class="card bg-gradient-success">
                 <div class="card-header border-0">

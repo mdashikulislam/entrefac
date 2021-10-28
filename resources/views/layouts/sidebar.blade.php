@@ -36,6 +36,14 @@ $currentRoute = Route::currentRouteName();
                 </li>
                 @if($roleName === USER)
                     <li class="nav-item">
+                        <a href="{{route('user.account')}}" class="nav-link {{$currentRoute == 'user.account' ? 'active':''}}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Account
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('donate')}}" class="nav-link {{$currentRoute == 'donate' ? 'active':''}}">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>

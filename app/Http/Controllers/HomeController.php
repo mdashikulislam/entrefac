@@ -35,6 +35,13 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function userAccount()
+    {
+        return view('landing')
+            ->with([
+                'user'=>\Auth::user()
+            ]);
+    }
     public function landing()
     {
 
@@ -53,9 +60,12 @@ class HomeController extends Controller
                     'amount'=>$totalAmount
                 ]);
         }else{
-            return view('landing')
+            $totalReferral = User::where('referral_code',Auth::user()->my_code)->count();
+            $totalPayment = Donar::where('user_id',Auth::id())->sum('amount');
+            return view('admin')
                 ->with([
-                    'user'=>\Auth::user()
+                    'totalReferral'=>$totalReferral,
+                    'totalPayment'=>$totalPayment,
                 ]);
         }
     }
@@ -385,7 +395,7 @@ class HomeController extends Controller
         $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->account_status = 'Approved';
+        $user->account_status = 'Pending';
         $user->save();
         $user->assignRole(\USER);
         toast('User added successfully','success');
